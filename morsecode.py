@@ -13,21 +13,28 @@ MORSE_CODE_DICT = {'A': '.-', 'B': '-...',
                    '7': '--...', '8': '---..', '9': '----.',
                    '0': '-----', ', ': '--..--', '.': '.-.-.-',
                    '?': '..--..', '/': '-..-.', '-': '-....-',
-                   '(': '-.--.', ')': '-.--.-'}
+                   '(': '-.--.', ')': '-.--.-', ' ': '/'}
 
 
 def encrypt(message):
+    return "\n".join(
+        encrypt_line(line) for line in message.splitlines()
+    )
+
+def encrypt_line(message):
     cipher = ''
     for letter in message:
-        if letter != ' ':
-            cipher += MORSE_CODE_DICT[letter] + ' '
-        else:
-            cipher += ' '
+        cipher += MORSE_CODE_DICT[letter] + ' '
 
     return cipher
 
 
 def decrypt(message):
+    return "\n".join(
+        decrypt_line(line) for line in message.splitlines()
+    )
+
+def decrypt_line(message):
     message += ' '
 
     decipher = ''
@@ -50,14 +57,30 @@ def decrypt(message):
 
 
 def encryptor():
-    message = input("Put your message here to encrypt it.\n")
-    result = encrypt(message.upper())
+    print("Put your text here to encrypt it. Press Enter on a blank line when finished.")
+    lines = []
+
+    while True:
+        line = input()
+        if line == "":
+            break
+        lines.append(line)
+
+    result = encrypt("\n".join(lines).upper())
     print(result)
 
 
 def decryptor():
-    message = input("Put your morse code here to decrypt it.\n")
-    result = decrypt(message)
+    print("Put your Morse code here to decrypt it. Press Enter on a blank line when finished.")
+    lines = []
+
+    while True:
+        line = input()
+        if line == "":
+            break
+        lines.append(line)
+
+    result = decrypt("\n".join(lines).upper())
     print(result)
 
 
