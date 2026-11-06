@@ -57,7 +57,6 @@ def decrypt_line(message):
 
 
 def encryptor():
-    print("Put your text here to encrypt it. Press Enter on a blank line when finished.")
     lines = []
 
     while True:
@@ -67,11 +66,10 @@ def encryptor():
         lines.append(line)
 
     result = encrypt("\n".join(lines).upper())
-    print(result)
+    return(result)
 
 
 def decryptor():
-    print("Put your Morse code here to decrypt it. Press Enter on a blank line when finished.")
     lines = []
 
     while True:
@@ -81,7 +79,7 @@ def decryptor():
         lines.append(line)
 
     result = decrypt("\n".join(lines).upper())
-    print(result)
+    return(result)
 
 
 def main():
@@ -107,9 +105,11 @@ def main():
     opt = int(opt)
 
     if (opt == 1):
-        encryptor()
+        print("Put your text here to encrypt it. Press Enter on a blank line when finished.")
+        print(encryptor())
     elif (opt == 2):
-        decryptor()
+        print("Put your Morse code here to decrypt it. Press Enter on a blank line when finished.")
+        print(decryptor())
     else:
         print("Please choose a valid input.")
 
