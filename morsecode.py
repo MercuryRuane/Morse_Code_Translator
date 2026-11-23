@@ -15,12 +15,13 @@ MORSE_CODE_DICT = {'A': '.-', 'B': '-...',
                    '?': '..--..', '/': '-..-.', '-': '-....-',
                    '(': '-.--.', ')': '-.--.-', ' ': '/'}
 
-
+# Joins individual line encoding from encrypt_line()
 def encrypt(message):
     return "\n".join(
         encrypt_line(line) for line in message.splitlines()
     )
 
+# Encrypts a line of code using the Morse code dictionary
 def encrypt_line(message):
     cipher = ''
     for letter in message:
@@ -28,12 +29,13 @@ def encrypt_line(message):
 
     return cipher
 
-
+# Joins individual line decoding from decrypt_line()
 def decrypt(message):
     return "\n".join(
         decrypt_line(line) for line in message.splitlines()
     )
 
+# Decrypts a line of code using the Morse code dictionary
 def decrypt_line(message):
     message += ' '
 
@@ -55,7 +57,7 @@ def decrypt_line(message):
 
     return decipher
 
-
+# Calls encrypt() on each line of code in an input until input is empty
 def encryptor():
     lines = []
 
@@ -68,7 +70,7 @@ def encryptor():
     result = encrypt("\n".join(lines).upper())
     return(result)
 
-
+# Calls decrypt() on each line of code in an input until input is empty
 def decryptor():
     lines = []
 
@@ -81,7 +83,7 @@ def decryptor():
     result = decrypt("\n".join(lines).upper())
     return(result)
 
-
+# Runs the encoder/decoder for a message based on user input
 def main():
     print("""
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
